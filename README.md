@@ -4,7 +4,7 @@ KeepAlive是在[Leoric](https://github.com/tiann/Leoric)(通过JNI复活进程)�
 `master`分支是`利用 libbinder.so 与 ActivityManagerService 通信`的版本，`ioctl`分支是`使用 ioctl 与 binder 驱动通信`的版本。
 
 **注**：
-1. 该项目仅供学习和参考，在android4.4到android12.0的模拟器上有效，在真机上没有全面测试。
+1. 该项目仅供学习和参考，在android4.4到android9.0的模拟器上有效，在真机上不能保证保活成功（MIUI等定制系统已封杀了这个方案）。
 2. 对于自研轻量定制的 Android系统，对一些系统应用的保活，这个方案还是很有优势的。资源占用少，用户无感知，成功率高。
 3. 不建议在C端产品上使用。
 4. 可作为学习binder框架的一个案例。
