@@ -1,7 +1,7 @@
 # KeepAlive
-KeepAlive是在[Leoric](https://github.com/tiann/Leoric)(通过JNI复活进程)的基础上，实现了通过ioctl复活进程，能最大程度提高复活率。
+KeepAlive(通过JNI复活进程)，实现了通过ioctl复活进程，能最大程度提高复活率。
 
-`master`分支是`利用 libbinder.so 与 ActivityManagerService 通信`的版本，`ioctl`分支是`使用 ioctl 与 binder 驱动通信`的版本。
+`main`分支是`利用 libbinder.so 与 ActivityManagerService 通信`的版本，`ioctl`分支是`使用 ioctl 与 binder 驱动通信`的版本。
 
 **注**：
 1. 该项目仅供学习和参考，在android4.4到android9.0的模拟器上有效，在真机上不能保证保活成功（MIUI等定制系统已封杀了这个方案）。
