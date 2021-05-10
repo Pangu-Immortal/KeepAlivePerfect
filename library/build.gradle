@@ -13,7 +13,7 @@ android {
         consumerProguardFiles 'consumer-rules.pro'
         externalNativeBuild {
             cmake {
-                cppFlags ""
+                cppFlags "-std=c++11"
             }
         }
         ndk {
@@ -33,7 +33,6 @@ android {
             path "src/main/cpp/CMakeLists.txt"
         }
     }
-
     lintOptions {
         abortOnError false
     }

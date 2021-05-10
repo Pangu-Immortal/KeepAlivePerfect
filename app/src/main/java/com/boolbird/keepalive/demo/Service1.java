@@ -9,7 +9,7 @@ import com.boolbird.keepalive.KeepAliveService;
  * Doc说明 (此类核心功能):
  * +---------------------------+
  * | @author qihao             |
- * | @date on 2021/5/10 15:29 |
+ * | @date on 2021/5/10 16:12 |
  * +---------------------------+
  *  ┌─────────────────────────────────────────────────────────────┐
  *  │┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐│
@@ -33,7 +33,7 @@ public class Service1 extends KeepAliveService {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d(TAG,"onStartCommand");
+        Log.d(TAG, "Service1 started");
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -43,7 +43,6 @@ public class Service1 extends KeepAliveService {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                // int x = 8/0;
                     x++;
                     Log.d("Service1", x + "");
                 }

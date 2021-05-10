@@ -4,7 +4,7 @@ package com.boolbird.keepalive;
  * Doc说明 (此类核心功能):
  * +---------------------------+
  * | @author qihao             |
- * | @date on 2021/5/10 15:29 |
+ * | @date on 2021/5/10 16:13 |
  * +---------------------------+
  *  ┌─────────────────────────────────────────────────────────────┐
  *  │┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐│
@@ -31,7 +31,9 @@ class NativeKeepAlive {
         }
     }
 
-    public native void doDaemon(String indicatorSelfPath, String indicatorDaemonPath, String observerSelfPath, String observerDaemonPath, int code, long parcelPtr);
+    public native void doDaemon(String indicatorSelfPath, String indicatorDaemonPath, String observerSelfPath, String observerDaemonPath, String packageName, String serviceName, int sdkVersion);
+
+    public native void test(String packageName, String serviceName, int sdkVersion);
 
     public void onDaemonDead() {
         IKeepAliveProcess.Fetcher.fetchStrategy().onDaemonDead();

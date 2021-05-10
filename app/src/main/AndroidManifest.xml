@@ -25,6 +25,7 @@
         <service
             android:name="com.boolbird.keepalive.demo.Service1"
             android:process=":resident" />
+        <service android:name="com.boolbird.keepalive.demo.Service2" />
     </application>
 
 </manifest>
