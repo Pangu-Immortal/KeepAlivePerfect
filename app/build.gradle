@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 30
@@ -6,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId 'com.boolbird.keepalive'
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -20,8 +21,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    lintOptions {
-        abortOnError false
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
     }
 
 }
@@ -29,4 +37,5 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar", '*.aar'])
     implementation project(path: ':library')
+    implementation "androidx.core:core-ktx:1.5.0"
 }

@@ -1,15 +1,16 @@
-# KeepAlive
-KeepAlive是在[Leoric](https://github.com/tiann/Leoric)(通过JNI复活进程)的基础上，实现了通过ioctl复活进程，能最大程度提高复活率。
+# 🔥KeepAlivePerfect
+KeepAlivePerfect是通过JNI复活进程的基础上，实现了通过ioctl复活进程，能最大程度提高复活率。
 
-`master`分支是`利用 libbinder.so 与 ActivityManagerService 通信`的版本，`ioctl`分支是`使用 ioctl 与 binder 驱动通信`的版本。
+- `master` 分支是`利用 libbinder.so 与 ActivityManagerService 通信`的版本
+- `ioctl`  分支是`使用 ioctl 与 binder 驱动通信`的版本。
 
-**注**：
+**注🌈**：
 1. 该项目仅供学习和参考，在android4.4到android12.0的模拟器上有效，在真机上没有全面测试。
 2. 对于自研轻量定制的 Android系统，对一些系统应用的保活，这个方案还是很有优势的。资源占用少，用户无感知，成功率高。
 3. 不建议在C端产品上使用。
 4. 可作为学习binder框架的一个案例。
 
-## 使用方法
+## 👉 使用方法
 1. 在Application中注册KeepAlive服务
 ```
 @Override
@@ -46,7 +47,7 @@ configs.ignoreBatteryOptimization();
 // 配置短时间重启限制，每次重启间隔限制是10s，最多允许3次10秒内的连续重启
 configs.rebootThreshold(10*1000, 3);
 ```
-注：保活和重启限制相违背，更准确的应该做崩溃重启限制。
+⚠️注：保活和重启限制相违背，更准确的应该做崩溃重启限制。
 
 6. 设置应用自启执行的操作
 ```
@@ -59,7 +60,7 @@ configs.setOnBootReceivedListener(new KeepAliveConfigs.OnBootReceivedListener() 
 });
 ```
 
-## 实现原理
+## 🍎实现原理参考
 
 - [Android 黑科技保活实现原理揭秘](http://weishu.me/2020/01/16/a-keep-alive-method-on-android/)
 - [深度剖析App保活案例](http://www.52im.net/forum.php?mod=viewthread&tid=2893&highlight=%B1%A3%BB%EE)
@@ -67,7 +68,7 @@ configs.setOnBootReceivedListener(new KeepAliveConfigs.OnBootReceivedListener() 
 
 ## 应对方法
 
-下面是一种简单的方法杀死 KeepAlive:
+🌴下面是一种简单的方法杀死 KeepAlivePerfect:
 
 ```
 ps -A | grep `ps -A | grep keepalive | awk '{print $1}' | head -1` | awk '{print $2}' | xargs kill -19 && am force-stop com.boolbird.keepalive
@@ -81,6 +82,23 @@ ps -A | grep `ps -A | grep keepalive | awk '{print $1}' | head -1` | awk '{print
 ## 测试
 项目根目录下的kill_alive.sh用于重复杀进程测试。
 
-## 问题
-1、怎么保活多个进程
-2、避免在Application中初始化第三方库，避免在所有进程都初始化第三方库
+## 🤔️问题
+- 怎么保活多个进程
+- 避免在Application中初始化第三方库，避免在所有进程都初始化第三方库
+
+
+## 许可(LICENSE)✏️
+
+    Copyright 2021 @yugu88, KeepAlivePerfect Open Source Project
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
