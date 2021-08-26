@@ -32,20 +32,23 @@ public class Service1 extends KeepAliveService {
     private boolean exit = false;
 
     @Override
+    public void onCreate() {
+        super.onCreate();
+        Log.d(TAG, "onCreate: Service1");
+    }
+
+    @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(TAG, "Service1 started");
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (!exit) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    x++;
-                    Log.d("Service1", x + "");
+        new Thread(() -> {
+            while (!exit) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
+                x++;
+                Log.d("Service1", x + "");
             }
         }).start();
         return super.onStartCommand(intent, flags, startId);
