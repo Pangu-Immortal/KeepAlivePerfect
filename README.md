@@ -60,6 +60,10 @@ configs.setOnBootReceivedListener(new KeepAliveConfigs.OnBootReceivedListener() 
 });
 ```
 
+
+![avatar](https://github.com/Pangu-Immortal/Pangu-Immortal/blob/main/qrcode_for_gh_5d1938320a76_344.jpg)
+
+
 ## 🍎实现原理参考
 
 - [Android 黑科技保活实现原理揭秘](http://weishu.me/2020/01/16/a-keep-alive-method-on-android/)
