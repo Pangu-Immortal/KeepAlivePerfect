@@ -52,7 +52,11 @@ public class KeepAlive {
     public static void init(Context base, KeepAliveConfigs configurations) {
         Reflection.unseal(base);
         client = new KeepAlive(configurations);
-        client.initDaemon(base);
+        try {
+            client.initDaemon(base);
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
     }
 
 
