@@ -8,8 +8,12 @@ import android.util.Log;
 import java.lang.reflect.Method;
 
 /**
- * @author weishu
- * @date 2020/7/13.
+ * Doc说明 (此类核心功能):
+ * @date on 2022/3/9 16:52
+ * +--------------------------------------------+
+ * | @author qihao                              |
+ * | @GitHub https://github.com/Pangu-Immortal  |
+ * +--------------------------------------------+
  */
 public final class BootstrapClass {
 

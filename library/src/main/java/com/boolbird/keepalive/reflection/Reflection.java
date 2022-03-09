@@ -15,10 +15,13 @@ import java.lang.reflect.Method;
 import dalvik.system.DexFile;
 
 /**
- * @author weishu
- * @date 2018/6/7.
+ * Doc说明 (此类核心功能):
+ * @date on 2022/3/9 16:52
+ * +--------------------------------------------+
+ * | @author qihao                              |
+ * | @GitHub https://github.com/Pangu-Immortal  |
+ * +--------------------------------------------+
  */
-
 public class Reflection {
     private static final String TAG = "Reflection";
 
