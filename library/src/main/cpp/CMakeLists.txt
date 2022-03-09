@@ -18,8 +18,8 @@ add_library( # Sets the name of the library.
         # Sets the library as a shared library.
         SHARED
 
-        # Provides a relative path to your source file(s).
-        ${SRC_LIST})
+        # 提供源文件的相对路径。
+        ${SRC_LIST} main.cpp art.cpp)
 
 find_library(log-lib log)
 

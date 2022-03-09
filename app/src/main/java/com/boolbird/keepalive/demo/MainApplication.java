@@ -7,6 +7,8 @@ import android.util.Log;
 
 import com.boolbird.keepalive.KeepAlive;
 import com.boolbird.keepalive.KeepAliveConfigs;
+import com.boolbird.keepalive.Reflection;
+
 
 /**
  * Doc说明 (此类核心功能):
@@ -36,6 +38,9 @@ public class MainApplication extends Application {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         Log.d(TAG, "attachBaseContext");
+
+        Reflection.unseal(base);
+
         KeepAliveConfigs configs = new KeepAliveConfigs(
                 new KeepAliveConfigs.Config(getPackageName() + ":resident",
                         Service1.class.getCanonicalName()));
