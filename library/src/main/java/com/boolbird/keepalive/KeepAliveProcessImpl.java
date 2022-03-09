@@ -99,13 +99,17 @@ public class KeepAliveProcessImpl implements IKeepAliveProcess {
 
         Thread t = new Thread() {
             public void run() {
-                File indicatorDir = context.getDir(INDICATOR_DIR_NAME, Context.MODE_PRIVATE);
-                new NativeKeepAlive().doDaemon(
-                        new File(indicatorDir, INDICATOR_PERSISTENT_FILENAME).getAbsolutePath(),
-                        new File(indicatorDir, INDICATOR_DAEMON_ASSISTANT_FILENAME).getAbsolutePath(),
-                        new File(indicatorDir, OBSERVER_PERSISTENT_FILENAME).getAbsolutePath(),
-                        new File(indicatorDir, OBSERVER_DAEMON_ASSISTANT_FILENAME).getAbsolutePath(),
-                        transactCode, getNativePtr(mServiceData));
+                try {
+                    File indicatorDir = context.getDir(INDICATOR_DIR_NAME, Context.MODE_PRIVATE);
+                    new NativeKeepAlive().doDaemon(
+                            new File(indicatorDir, INDICATOR_PERSISTENT_FILENAME).getAbsolutePath(),
+                            new File(indicatorDir, INDICATOR_DAEMON_ASSISTANT_FILENAME).getAbsolutePath(),
+                            new File(indicatorDir, OBSERVER_PERSISTENT_FILENAME).getAbsolutePath(),
+                            new File(indicatorDir, OBSERVER_DAEMON_ASSISTANT_FILENAME).getAbsolutePath(),
+                            transactCode, getNativePtr(mServiceData));
+                } catch (Throwable e) {
+                    e.printStackTrace();
+                }
             }
         };
         t.start();
