@@ -8,12 +8,13 @@
 
     <application
         android:name="com.boolbird.keepalive.demo.MainApplication"
+        android:icon="@mipmap/ic_launcher"
         android:label="KeepAlive"
         android:supportsRtl="true"
-        android:icon="@mipmap/ic_launcher"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name="com.boolbird.keepalive.demo.MainActivity"
+            android:exported="true"
             android:label="KeepAlive"
             android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
@@ -24,6 +25,7 @@
 
         <service
             android:name="com.boolbird.keepalive.demo.Service1"
+            android:exported="true"
             android:process=":resident" />
     </application>
 
