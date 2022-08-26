@@ -86,6 +86,8 @@ ps -A | grep `ps -A | grep keepalive | awk '{print $1}' | head -1` | awk '{print
 - 怎么保活多个进程
 - 避免在Application中初始化第三方库，避免在所有进程都初始化第三方库
 
+## 感谢🙏Marswin提供的思路，通过逆向Google市场的CleanMaster找到了这个库。
+https://github.com/Marswin/MarsDaemon。
 
 ## 许可(LICENSE)✏️
 
