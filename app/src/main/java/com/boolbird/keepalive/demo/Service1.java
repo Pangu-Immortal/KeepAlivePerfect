@@ -1,9 +1,10 @@
 package com.boolbird.keepalive.demo;
 
+import android.app.Service;
 import android.content.Intent;
+import android.os.IBinder;
 import android.util.Log;
 
-import com.boolbird.keepalive.KeepAliveService;
 
 /**
  * Doc说明 (此类核心功能):
@@ -26,7 +27,7 @@ import com.boolbird.keepalive.KeepAliveService;
  *  └─────────────────────────────────────────────────────────────┘
  *
  */
-public class Service1 extends KeepAliveService {
+public class Service1 extends Service {
     private static final String TAG = "KeepAliveService1";
     int x = 0;
     private boolean exit = false;
@@ -50,5 +51,10 @@ public class Service1 extends KeepAliveService {
             }
         }).start();
         return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
     }
 }
