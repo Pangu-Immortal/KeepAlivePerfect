@@ -1,0 +1,284 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.daemon">
+
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+
+    <uses-permission android:name="com.coloros.mcs.permission.FOREGROUND_SERVICE" />
+
+    <uses-permission android:name="com.coloros.mcs.permission.USE_FULL_SCREEN_INTENT" />
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <uses-permission android:name="com.vivo.notification.permission.BADGE_ICON" />
+
+
+    <queries>
+
+        <intent>
+
+            <action android:name="android.intent.action.VIEW" />
+
+            <category android:name="android.intent.category.BROWSABLE" />
+
+            <data android:scheme="https" />
+        </intent>
+    </queries>
+
+    <uses-permission android:name="com.asus.msa.SupplementaryDID.ACCESS" />
+
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+
+    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
+
+    <meta-data
+        android:name="android.webkit.WebView.EnableSafeBrowsing"
+        android:value="false" />
+
+    <uses-permission android:name="qiku.permission.PACKAGE_USAGE_STATS" />
+
+    <uses-permission android:name="qiku.permission.READ_WRITE_QKSECURE" />
+
+    <uses-permission android:name="android.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS" />
+
+    <uses-permission android:name="com.qihoo360.launcher.permission.WRITE_SETTINGS" />
+
+    <uses-permission android:name="com.qihoo360.launcher.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="net.qihoo.launcher.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="net.qihoo.launcher.permission.WRITE_SETTINGS" />
+
+    <uses-permission android:name="com.lge.launcher.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="com.lge.launcher.permission.WRITE_SETTINGS" />
+
+    <uses-permission android:name="com.android.launcher2.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="com.android.launcher2.permission.WRITE_SETTINGS" />
+
+    <uses-permission android:name="com.android.launcher3.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="com.android.launcher3.permission.WRITE_SETTINGS" />
+
+    <uses-permission android:name="com.sec.android.app.twlauncher.settings.READ_SETTINGS" />
+
+    <uses-permission android:name="com.sec.android.app.twlauncher.settings.WRITE_SETTINGS" />
+
+    <uses-permission android:name="com.tencent.qqlauncher.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="com.tencent.qqlauncher.permission.WRITE_SETTINGS" />
+
+    <uses-permission android:name="com.huawei.launcher2.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="com.huawei.launcher2.permission.WRITE_SETTINGS" />
+
+    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS" />
+
+    <uses-permission android:name="com.htc.launcher.permission.WRITE_SETTINGS" />
+
+    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="com.sec.android.app.twlauncher.WRITE_SETTINGS" />
+
+    <uses-permission android:name="com.sec.android.app.twlauncher.READ_SETTINGS" />
+
+    <uses-permission android:name="org.adw.launcher.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="org.adw.launcher.permission.WRITE_SETTINGS" />
+
+    <uses-permission android:name="org.adwfreak.launcher.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="org.adwfreak.launcher.permission.WRITE_SETTINGS" />
+
+    <uses-permission android:name="com.gau.go.launcherex.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="com.gau.go.launcherex.permission.WRITE_SETTINGS" />
+
+    <uses-permission android:name="com.qihoo360.home.permission.WRITE_SETTINGS" />
+
+    <uses-permission android:name="com.qihoo360.home.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="com.fede.launcher.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="com.fede.launcher.permission.WRITE_SETTINGS" />
+
+    <uses-permission android:name="com.anddoes.launcher.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="com.anddoes.launcher.permission.WRITE_SETTINGS" />
+
+    <uses-permission android:name="com.lenovo.launcher.permission.WRITE_SETTINGS" />
+
+    <uses-permission android:name="com.lenovo.launcher.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="com.nd.android.launcher.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="com.nd.android.launcher.permission.WRITE_SETTINGS" />
+
+    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="com.huawei.launcher3.permission.READ_SETTINGS" />
+
+    <uses-permission android:name="com.huawei.launcher3.permission.WRITE_SETTINGS" />
+
+    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" />
+
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES" />
+
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_ADDED" />
+
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_CHANGED" />
+
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_INSTALL" />
+
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_REPLACED" />
+
+    <uses-permission android:name="com.dn.cpyr.qlds.permission.KW_SDK_BROADCAST" />
+
+    <uses-permission android:name="com.sec.android.provider.badge.permission.READ" />
+
+    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" />
+
+    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" />
+
+    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" />
+
+    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" />
+
+    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" />
+
+    <uses-permission android:name="android.permission.READ_APP_BADGE" />
+
+    <uses-permission android:name="android.permission.READ_SYNC_STATS" />
+
+    <instrumentation
+        android:name="com.daemon.DInstrumentation"
+        android:targetPackage="com.daemonLibrary.demo"
+        android:targetProcesses="com.daemonLibrary.demo,com.daemonLibrary.demo:service" />
+
+    <application>
+
+        <activity android:name="com.daemon.onepixel.OnePixelActivity"/>
+        <service
+            android:name="com.daemon.DaemonService"
+            android:process=":service" />
+        <service
+            android:name="com.daemon.CoreService"
+            android:process="android.process.media" />
+        <service
+            android:name="com.daemon.IntentJobService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service
+            android:name="com.daemon.DaemonJobService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+
+        <receiver android:name="com.daemon.receiver.DaemonStaticReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.REBOOT" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.EVENT_REMINDER" />
+            </intent-filter>
+
+            <intent-filter android:priority="2147483647">
+
+                <action android:name="android.hardware.usb.action.USB_STATE" />
+
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+
+                <action android:name="android.net.wifi.STATE_CHANGE" />
+
+                <action android:name="com.app.startrecevice" />
+
+                <action android:name="android.intent.action.TIME_TICK" />
+
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+</manifest>

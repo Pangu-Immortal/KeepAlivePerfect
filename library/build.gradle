@@ -1,0 +1,48 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 23
+        targetSdk 31
+
+        versionCode 1
+        versionName "1.0"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    lint {
+        abortOnError false
+    }
+    externalNativeBuild {
+        ndkBuild {
+            path 'jni/Android.mk'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
+    implementation 'androidx.core:core:1.9.0'
+    implementation "androidx.core:core-ktx:1.9.0"
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+//    implementation 'me.weishu:free_reflection:3.0.1'
+}
