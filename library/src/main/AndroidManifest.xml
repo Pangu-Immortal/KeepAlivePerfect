@@ -2,7 +2,6 @@
     package="com.fanjun.keeplive">
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    //TODD兼容Android9.0权限
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.REORDER_TASKS" />
