@@ -63,6 +63,9 @@ configs.setOnBootReceivedListener(new KeepAliveConfigs.OnBootReceivedListener() 
 });
 ```
 
+***
+
+# 欢迎关注公众号，后续技术更新和讲解都发布在公众号文章里。
 
 ![avatar](https://github.com/Pangu-Immortal/Pangu-Immortal/blob/main/qrcode_for_gh_5d1938320a76_344.jpg)
 
