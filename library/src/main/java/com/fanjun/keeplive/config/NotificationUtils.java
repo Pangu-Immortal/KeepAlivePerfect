@@ -51,7 +51,7 @@ public class NotificationUtils extends ContextWrapper {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Notification.Builder getChannelNotification(String title, String content, int icon, Intent intent) {
         //PendingIntent.FLAG_UPDATE_CURRENT 这个类型才能传值
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, getPendingIntent());
         return new Notification.Builder(context, id)
                 .setContentTitle(title)
                 .setContentText(content)
@@ -60,9 +60,13 @@ public class NotificationUtils extends ContextWrapper {
                 .setContentIntent(pendingIntent);
     }
 
+    private int getPendingIntent() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.S ? PendingIntent.FLAG_IMMUTABLE : PendingIntent.FLAG_UPDATE_CURRENT;
+    }
+
     public NotificationCompat.Builder getNotification_25(String title, String content, int icon, Intent intent) {
         //PendingIntent.FLAG_UPDATE_CURRENT 这个类型才能传值
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, getPendingIntent());
         return new NotificationCompat.Builder(context, id)
                 .setContentTitle(title)
                 .setContentText(content)

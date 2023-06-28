@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         minSdk 19
-        targetSdk 31
+        targetSdk 32
 
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -34,6 +34,6 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'androidx.annotation:annotation:1.5.0'
-    implementation 'androidx.core:core:1.9.0'
+    implementation 'androidx.annotation:annotation:1.6.0'
+    implementation 'androidx.core:core:1.10.1'
 }

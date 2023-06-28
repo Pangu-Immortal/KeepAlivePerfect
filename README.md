@@ -4,6 +4,16 @@ KeepAlivePerfect是通过JNI复活进程的基础上，实现了通过ioctl复�
 - `main` 分支是`利用 libbinder.so 与 ActivityManagerService 通信`的版本
 - `ioctl`  分支是`使用 ioctl 与 binder 驱动通信`的版本。
 
+- kotlin version '1.8.22'
+- JDK version '11.0.12'
+- AGP version '7.4.0'
+- Gradle  version 'gradle-7.6-bin.zip'
+- compileSdk 33
+- targetSdk 32
+- minSdk 19
+
+
+
 ### QQ 大学生实习群：794834282
 ---
 
