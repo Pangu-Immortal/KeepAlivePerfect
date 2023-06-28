@@ -11,7 +11,13 @@
         android:label="KeepAlive"
         android:supportsRtl="true"
         android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         tools:ignore="GoogleAppIndexingWarning">
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_small_notification" />
+
         <activity
             android:name="com.boolbird.keepalive.demo.MainActivity"
             android:label="KeepAlive"
@@ -22,9 +28,6 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name="com.boolbird.keepalive.demo.Service1"
-            android:process=":resident" />
     </application>
 
 </manifest>
