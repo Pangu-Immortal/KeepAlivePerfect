@@ -12,7 +12,10 @@ KeepAlivePerfect是通过JNI复活进程的基础上，实现了通过ioctl复�
 - targetSdk 32
 - minSdk 19
 
-## 声明（每天找我的人太多，又太菜，很烦，请理解）
+
+![avatar](https://github.com/Pangu-Immortal/Pangu-Immortal/blob/main/qrcode_for_gh_5d1938320a76_344.jpg)
+
+## 声明（每天找我的人太多，又太菜，很无奈，请理解）
 
 - 想咨询Google上架相关问题，1000元/小时(不满一小时按一小时算)
 
@@ -116,7 +119,7 @@ configs.setOnBootReceivedListener(new KeepAliveConfigs.OnBootReceivedListener() 
 
 ***
 
-# 欢迎关注公众号，后续技术更新和讲解都发布在公众号文章里。
+## 欢迎关注公众号，后续技术更新和讲解都发布在公众号文章里。
 
 ![avatar](https://github.com/Pangu-Immortal/Pangu-Immortal/blob/main/qrcode_for_gh_5d1938320a76_344.jpg)
 
