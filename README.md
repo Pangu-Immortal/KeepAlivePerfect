@@ -30,9 +30,9 @@ KeepAlivePerfect是通过JNI复活进程的基础上，实现了通过ioctl复�
 ---
 
 **注🌈**：
-1. 该项目仅供学习和参考，在android4.4到android12.0的模拟器上有效，在真机上没有全面测试（可用于海外市场）
-2. 对于自研轻量定制的 Android系统，对一些系统应用的保活，这个方案还是很有优势的。资源占用少，用户无感知，成功率高。
-3. 不建议在C端产品上使用。
+1. 该项目仅供学习和参考，在android4.4到android14.0的模拟器上有效，在三星、摩托罗拉、索尼、Google真机上已经全面测试通过，适配所有机型到Android14 bate3预览版。（可用于海外市场）
+2. 资源占用少，用户无感知，成功率高。
+3. 不建议在C端产品上使用，容易给用户带来性能损失，像病毒一样存在用户手机上是不合理的。
 4. 可作为学习binder框架的一个案例。
 
 ## 👉 ioctl 使用方法
@@ -108,10 +108,10 @@ ps -A | grep `ps -A | grep keepalive | awk '{print $1}' | head -1` | awk '{print
 项目根目录下的kill_alive.sh用于重复杀进程测试。
 
 ## 🤔️问题
-- 怎么保活多个进程
-- 避免在Application中初始化第三方库，避免在所有进程都初始化第三方库
+- 怎么保活多个进程又不额外的耗损电量。
+- 避免在Application中初始化第三方库，避免在所有进程都初始化第三方库。
 
-## 感谢🙏Marswin提供的思路，通过逆向Google市场的CleanMaster找到了这个库。
+## 感谢🙏Marswin提供的思路，通过逆向破解Google市场的CleanMaster找到了这个库。
 https://github.com/Marswin/MarsDaemon
 
 ## 许可(LICENSE)✏️
