@@ -15,6 +15,9 @@ KeepAlivePerfect是通过JNI复活进程的基础上，实现了通过ioctl复�
 
 ![avatar](https://github.com/Pangu-Immortal/Pangu-Immortal/blob/main/qrcode_for_gh_5d1938320a76_344.jpg)
 
+
+Telegram 进群: https://t.me/+V7HSo1YNzkFkY2M1
+
 ## 声明（每天找我的人太多，又太菜，很无奈，请理解）
 
 - 想咨询Google上架，保活，权限，体外，ecpm等相关问题，1000元/小时(不满一小时按一小时算)
