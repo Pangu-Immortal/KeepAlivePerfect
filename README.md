@@ -1,5 +1,6 @@
 # 🔥 KeepAlivePerfect（这里只是冰山一角）
 点击star，关注不迷路。
+
 **KeepAlivePerfect** 是一个通过 JNI 技术实现进程复活的项目，进一步通过 `ioctl` 提高了复活率，最大程度地增强了应用的持久性。
 
 - **`main` 分支**：利用 `libbinder.so` 与 `ActivityManagerService` 通信的版本。
