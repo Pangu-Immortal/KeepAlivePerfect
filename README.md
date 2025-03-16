@@ -1,3 +1,4 @@
+### 直接加群，这里只是冰山一角。
 # 🔥KeepAlivePerfect
 KeepAlivePerfect是通过JNI复活进程的基础上，实现了通过ioctl复活进程，能最大程度提高复活率。
 
