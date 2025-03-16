@@ -19,7 +19,7 @@ KeepAlivePerfect是通过JNI复活进程的基础上，实现了通过ioctl复�
 🔥Telegram 进群: https://t.me/+V7HSo1YNzkFkY2M1
 
 
-## 声明🔥
+## 声明🔥（这只是冰山一角）
 
 - 想咨询Google上架相关问题，1000元/小时(不满一小时按一小时算)
 
