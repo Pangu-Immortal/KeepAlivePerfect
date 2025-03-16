@@ -1,80 +1,75 @@
-### 直接加群，这里只是冰山一角。
-# 🔥KeepAlivePerfect
-KeepAlivePerfect是通过JNI复活进程的基础上，实现了通过ioctl复活进程，能最大程度提高复活率。
+# 🔥 KeepAlivePerfect（这里只是冰山一角）
+点击star，关注不迷路。
+**KeepAlivePerfect** 是一个通过 JNI 技术实现进程复活的项目，进一步通过 `ioctl` 提高了复活率，最大程度地增强了应用的持久性。
 
-- `main` 分支是`利用 libbinder.so 与 ActivityManagerService 通信`的版本
-- `ioctl`  分支是`使用 ioctl 与 binder 驱动通信`的版本。
+- **`main` 分支**：利用 `libbinder.so` 与 `ActivityManagerService` 通信的版本。
+- **`ioctl` 分支**：使用 `ioctl` 与 binder 驱动通信的版本。
 
-- kotlin version '1.8.22'
-- JDK version '11.0.12'
-- AGP version '7.4.0'
-- Gradle  version 'gradle-7.6-bin.zip'
-- compileSdk 33
-- targetSdk 32
-- minSdk 19
+**项目环境：**
 
+- Kotlin 版本：`1.8.22`
+- JDK 版本：`11.0.12`
+- Android Gradle 插件版本：`7.4.0`
+- Gradle 版本：`7.6`
+- 编译 SDK：`33`
+- 目标 SDK：`32`
+- 最低支持 SDK：`19`
 
-![avatar](https://github.com/Pangu-Immortal/Pangu-Immortal/blob/main/getqrcode.png)
+![二维码](https://github.com/Pangu-Immortal/Pangu-Immortal/blob/main/getqrcode.png)
 
+🔥 **Telegram 群组**： [点击加群讨论，这里只是冰山一角。](https://t.me/+V7HSo1YNzkFkY2M1)
 
-🔥Telegram 进群: https://t.me/+V7HSo1YNzkFkY2M1
+## 声明 🔥
 
+- **咨询服务**：关于 Google 上架和封号相关问题，提供按问题收费的咨询服务。
+- **深度定制**：提供个性化服务，价格视需求而定。
+- **保活服务**：提供 AAB 保活服务和马甲包服务，彻底解决关联问题，价格私聊。
+- **优惠政策**：如果您之前有过打赏，享受六折优惠；曾提交过 PR 的用户，免费提供服务。
+- **交流与合作**：欢迎通过提 Issue 提出问题，或通过提交 PR 与我们交流合作。
 
-## 声明🔥（这只是冰山一角）
+## 收费功能 🔥
 
-- 咨询Google上架和封号相关问题，按问题收费。
+（所有功能均提供对 Android 15 版本的适配，添加联系时请备注需求）
 
-- 想深度定制，个性化服务，价格视需求而定。
-
-- 本人提供aab 保活服务 和 马甲包服务，彻底解决关联问题，价格私聊。
-
-- 如果你之前有打赏过，打6折，提过PR者，免费
-
-- 有问题欢迎提Issue，有想法欢迎提PR或与我交流
-
-
-
-## 收费功能（这只是冰山一角）
-
-（所有功能都提供Android15版本适配，加我请备注需求）
-
-- 【App】安装后自启动，从市场下载之后，不点击App，安装的瞬间自己就可以启动。
-- 【App】修改浏览器ua刷H5广告。
-- 【App】无权限后台弹Activity，可以在任意的时机，任何想弹的时候都可以弹出。不需要权限也不需要锁屏。
-- 【App】保活，不停的点击强制停止，死不了。可以完美的扛住点击强制停止操作。
-- 【App】拉活，彻底死亡的状态下，可以15分钟内，唤醒自己。
-- 【App】防卸载，可以防止用户卸载，点击卸载无反应。
-- 【App】无感知卸载竞品，可以无感知卸载手机中任意App。
-- 【App】隐藏桌面图标，可以安装后立刻隐藏自己，也可以在想要隐藏时，随时隐藏，支持Android 15。
-- 【App】马甲包服务，彻底解决关联问题。为批量马甲包提供服务。
-- 【App】报病毒优化，无需重新打包，净化App，处理所有App的报毒问题。
-- 【App】账号隔离，为开发者提供全套完善的账号隔离体系，完整的账号隔离方案，防止账号关联。
-- 【App】IP漂移，支持拉取高ecpm地区的admob。
-- 【App】模拟iOS，支持Android设备模拟并拉取iOS的admob，超大幅度提高ecpm。
-- 【工具】机型模拟，支持批量刷下载量，可无成本快速刷百万下载量，迅速提高商店排名。
-- 【工具】国内机型保活，运动类、外卖类、聊天类等想实现永生不死，不被系统杀死，已经为多款App接入。
-- 【工具】防抓包处理，数据脱敏。棋牌类大规模上架等操作。
-- 【工具】多开、双开，无限分身等。
-- 【工具】大模型定制化开发，私有数据训练，NFSW模型开发，成人模型制作，成人话术，成人照片，成人视频，均可以训练制作私有化专属大模型。
-- 【工具】数字人、换脸、文生图、图生图，图生视频，图生数字人，制作明星、自己、家人的数字人。老照片复活，和已逝去的亲人对话。
-- 【工具】云游戏、云手机搭建，提供全套云端容器方案。打通云原生GPU、定制化服务器、全光网络、协同渲染、AI内容生成、云原生工具包等核心技术路径。
-- 【工具】定制化播放器，提供加密播放器、3D播放器、云播放器等。可提供对任意视频编解码定制服务。为AR、VR、MR场景提供服务。
-- 【工具】滤镜定制，可提供视频、相机、图片等滤镜处理，也可根据竞品效果进行模仿。
-- 【工具】AI 多场景定制，多年AI行业经验，可为小团队提供定制化的AI服务。
-- 【工具】ROM 定制，可提供各类定制化功能的Android系统，也可提供车载系统的定制化。提供软硬件交互的外包服务。
-
+- **应用自启动**：应用安装后无需用户点击即可自动启动。
+- **修改浏览器 UA**：修改浏览器用户代理以刷取 H5 广告。
+- **无权限后台弹出 Activity**：无需权限即可在后台任意时机弹出 Activity，无需锁屏。
+- **应用保活**：应用可在多次强制停止操作后仍保持运行，完美抵抗强制停止操作。
+- **应用拉活**：在应用彻底死亡的状态下，可在15分钟内唤醒自身。
+- **防卸载**：防止用户卸载应用，点击卸载无反应。
+- **无感知卸载竞品**：可无感知地卸载手机中任意应用。
+- **隐藏桌面图标**：应用安装后立即隐藏自身，或在需要时随时隐藏，支持 Android 15。
+- **马甲包服务**：彻底解决关联问题，为批量马甲包提供服务。
+- **报病毒优化**：无需重新打包，净化应用，处理所有应用的报毒问题。
+- **账号隔离**：为开发者提供完善的账号隔离体系，防止账号关联。
+- **IP 漂移**：支持拉取高 eCPM 地区的 AdMob 广告。
+- **模拟 iOS**：支持 Android 设备模拟并拉取 iOS 的 AdMob 广告，大幅提高 eCPM。
+- **机型模拟工具**：支持批量刷下载量，可无成本快速刷百万下载量，迅速提高商店排名。
+- **国内机型保活**：为运动类、外卖类、聊天类等应用实现永生不死，不被系统杀死，已为多款应用接入。
+- **防抓包处理**：数据脱敏，适用于棋牌类大规模上架等操作。
+- **多开、双开工具**：支持无限分身等功能。
+- **大模型定制开发**：提供私有数据训练、NSFW 模型开发、成人模型制作、成人话术、成人照片、成人视频等私有化专属大模型训练制作。
+- **数字人、换脸、图生图、图生视频**：制作明星、自己、家人的数字人，老照片复活，与已逝去的亲人对话。
+- **云游戏、云手机搭建**：提供全套云端容器方案，涵盖云原生 GPU、定制化服务器、全光网络、协同渲染、AI 内容生成、云原生工具包等核心技术路径。
+- **定制化播放器**：提供加密播放器、3D 播放器、云播放器等，可为任意视频编解码提供定制服务，为 AR、VR、MR 场景提供服务。
+- **滤镜定制**：提供视频、相机、图片等滤镜处理，可根据竞品效果进行模仿。
+- **AI 多场景定制**：多年 AI 行业经验，可为小团队提供定制化的 AI 服务。
+- **ROM 定制**：提供各类定制化功能的 Android 系统，也可提供车载系统的定制化，提供软硬件交互的外包服务。
 
 ---
 
-**注🌈**：
-1. 该项目仅供学习和参考，在android4.4到android15.0的模拟器上有效，在三星、摩托罗拉、索尼、Google真机上已经全面测试通过，适配所有机型到Android15 bate预览版。（可用于海外市场）
+**注意 🌈：**
+
+1. 该项目仅供学习和参考，在 Android 4.4 到 Android 15.0 的模拟器上有效，已在三星、摩托罗拉、索尼、Google 真机上全面测试通过，适配所有机型到 Android 15 Beta 预览版（可用于海外市场）。
 2. 资源占用少，用户无感知，成功率高。
-3. 不建议在C端产品上使用，容易给用户带来性能损失，像病毒一样存在用户手机上是不合理的。
-4. 可作为学习binder框架的一个案例。
+3. 不建议在 C 端产品上使用，可能会给用户带来性能损失，像病毒一样存在于用户手机上是不合理的。
+4. 可作为学习 Binder 框架的一个案例。
 
 ## 👉 ioctl 使用方法
-1. 在Application中注册KeepAlive服务
-```
+
+1. **在 Application 中注册 KeepAlive 服务**
+
+```kotlin
 @Override
 protected void attachBaseContext(Context base) {
     super.attachBaseContext(base);
@@ -85,84 +80,33 @@ protected void attachBaseContext(Context base) {
 }
 ```
 
-2. Service1对应的进程名是":resident"，或者其它任意命名
-```
+2. **Service1 对应的进程名是 ":resident"，或者其它任意命名**
+
+```xml
 <service
     android:name="Service1"
     android:process=":resident" />
 ```
-Service需要继承KeepAliveService，否则在Android4.4上将没有保活效果。
 
-3. 在合适的地方，启动Service1，它将自动唤醒保活进程
-```
+Service 需要继承 `KeepAliveService`，否则在 Android 4.4 上将没有保活效果。
+
+3. **在合适的地方，启动 Service1，它将自动唤醒保活进程**
+
+```kotlin
 startService(new Intent(MainActivity.this, Service1.class));
 ```
-如果需要服务自启动，看第6条。
 
-4. 忽略电池优化
-```
+如果需要服务自启动，请参见第6条。
+
+4. **忽略电池优化**
+
+```kotlin
 configs.ignoreBatteryOptimization();
 ```
 
-5. 防止短时间内重复启动
-```
-// 配置短时间重启限制，每次重启间隔限制是10s，最多允许3次10秒内的连续重启
-configs.rebootThreshold(10*1000, 3);
-```
-⚠️注：保活和重启限制相违背，更准确的应该做崩溃重启限制。
+5. **防止短时间内重复启动**
 
-6. 设置应用自启执行的操作
-```
-configs.setOnBootReceivedListener(new KeepAliveConfigs.OnBootReceivedListener() {
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        // 设置服务自启
-        context.startService(new Intent(context, Service1.class));
-    }
-});
-```
-
-***
-
-## 欢迎关注公众号，后续技术更新和讲解都发布在公众号文章里。
-
-![avatar](https://github.com/Pangu-Immortal/Pangu-Immortal/blob/main/getqrcode.png)
-
-## 应对方法
-
-🌴下面是一种简单的方法杀死 KeepAlivePerfect:
-
-```
-ps -A | grep `ps -A | grep keepalive | awk '{print $1}' | head -1` | awk '{print $2}' | xargs kill -19 && am force-stop com.boolbird.keepalive
-```
-
-对于系统有两种思路可以选择：
-
-1. 加入在 force-stop 期间不允许启动新的进程的逻辑
-2. 修改 force-stop 的杀进程逻辑为：预先收集好所有进程再进行 kill（如有必要还可以先发送 SIGSTOP）
-
-## 测试
-项目根目录下的kill_alive.sh用于重复杀进程测试。
-
-## 🤔️问题
-- 怎么保活多个进程又不额外的耗损电量。
-- 避免在Application中初始化第三方库，避免在所有进程都初始化第三方库。
-
-## 感谢🙏Marswin提供的思路，通过逆向破解Google市场的CleanMaster找到了这个库。
-https://github.com/Marswin/MarsDaemon
-
-## 许可(LICENSE)✏️
-
-    Copyright 2021 @yugu88, KeepAlivePerfect Open Source Project
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-        http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+```kotlin
+// 配置短时间重启限制，每次重启间隔限制是10秒，最多允许3次10秒内的连续重启
+configs.rebootThreshold(10 * 1000, 3);
+`` 
