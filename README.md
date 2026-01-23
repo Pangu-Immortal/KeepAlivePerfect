@@ -1,4 +1,15 @@
 # 🔥 KeepAlivePerfect（这里只是冰山一角）
+
+<div align="center">
+
+[![Stars](https://img.shields.io/github/stars/Pangu-Immortal/KeepAlivePerfect?style=for-the-badge&logo=github&color=yellow)](https://github.com/Pangu-Immortal/KeepAlivePerfect)
+[![Forks](https://img.shields.io/github/forks/Pangu-Immortal/KeepAlivePerfect?style=for-the-badge&logo=github&color=blue)](https://github.com/Pangu-Immortal/KeepAlivePerfect/fork)
+[![访问量](https://komarev.com/ghpvc/?username=Pangu-Immortal-KeepAlivePerfect&label=访问量&color=f59e0b&style=for-the-badge)](https://github.com/Pangu-Immortal/KeepAlivePerfect)
+
+![萌萌计数器](https://moe-counter.glitch.me/get/@KeepAlivePerfect?theme=rule34)
+
+</div>
+
 点击star，关注不迷路。
 
 **KeepAlivePerfect** 是一个通过 JNI 技术实现进程复活的项目，进一步通过 `ioctl` 提高了复活率，最大程度地增强了应用的持久性。
@@ -113,3 +124,14 @@ configs.ignoreBatteryOptimization();
 // 配置短时间重启限制，每次重启间隔限制是10秒，最多允许3次10秒内的连续重启
 configs.rebootThreshold(10 * 1000, 3);
 `` 
+`
+
+---
+
+## ⭐ Star 趋势
+
+<div align="center">
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Pangu-Immortal/KeepAlivePerfect&type=Date)](https://star-history.com/#Pangu-Immortal/KeepAlivePerfect&Date)
+
+</div>
