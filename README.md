@@ -1,18 +1,11 @@
+
 <div align="center">
 
 ![萌萌计数器](https://count.getloli.com/get/@KeepAlivePerfect?theme=rule34)
 
 </div>
 
-
 # 🔥 KeepAlivePerfect（这里只是冰山一角）
-
-<div align="center">
-
-[![Stars](https://img.shields.io/github/stars/Pangu-Immortal/KeepAlivePerfect?style=for-the-badge&logo=github&color=yellow)](https://github.com/Pangu-Immortal/KeepAlivePerfect)
-[![Forks](https://img.shields.io/github/forks/Pangu-Immortal/KeepAlivePerfect?style=for-the-badge&logo=github&color=blue)](https://github.com/Pangu-Immortal/KeepAlivePerfect/fork)
-[![访问量](https://komarev.com/ghpvc/?username=Pangu-Immortal-KeepAlivePerfect&label=访问量&color=f59e0b&style=for-the-badge)](https://github.com/Pangu-Immortal/KeepAlivePerfect)
-</div>
 
 点击star，关注不迷路。
 
@@ -133,12 +126,6 @@ configs.rebootThreshold(10 * 1000, 3);
 ---
 
 ## ⭐ Star 趋势
-
-<div align="center">
-
-[![Star History Chart](https://api.star-history.com/svg?repos=Pangu-Immortal/KeepAlivePerfect&type=Date)](https://star-history.com/#Pangu-Immortal/KeepAlivePerfect&Date)
-
-</div>
 
 ## Contributing
 
