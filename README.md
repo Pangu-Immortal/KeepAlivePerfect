@@ -1,3 +1,5 @@
+![访客统计](https://count.getloli.com/get/@KeepAlivePerfect?theme=rule34)
+
 # 🔥 KeepAlivePerfect（这里只是冰山一角）
 
 <div align="center">
@@ -135,3 +137,18 @@ configs.rebootThreshold(10 * 1000, 3);
 [![Star History Chart](https://api.star-history.com/svg?repos=Pangu-Immortal/KeepAlivePerfect&type=Date)](https://star-history.com/#Pangu-Immortal/KeepAlivePerfect&Date)
 
 </div>
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
