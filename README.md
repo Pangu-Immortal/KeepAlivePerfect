@@ -8,6 +8,10 @@
 
 </div>
 
+<p align="center">
+  <b>🌟 如果觉得有帮助，请点击 <a href="https://github.com/Pangu-Immortal/KeepAlivePerfect/stargazers">Star</a> 支持一下，关注不迷路！🌟</b>
+</p>
+
 **KeepAlivePerfect** 是一个通过 JNI 技术实现进程复活的项目，进一步通过 `ioctl` 提高了复活率，最大程度地增强了应用的持久性。
 
 完整的代码在仓库：https://github.com/Pangu-Immortal/KeepLiveService
