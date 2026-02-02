@@ -1,4 +1,9 @@
-![访客统计](https://count.getloli.com/get/@KeepAlivePerfect?theme=rule34)
+<div align="center">
+
+![萌萌计数器](https://count.getloli.com/get/@KeepAlivePerfect?theme=rule34)
+
+</div>
+
 
 # 🔥 KeepAlivePerfect（这里只是冰山一角）
 
@@ -7,9 +12,6 @@
 [![Stars](https://img.shields.io/github/stars/Pangu-Immortal/KeepAlivePerfect?style=for-the-badge&logo=github&color=yellow)](https://github.com/Pangu-Immortal/KeepAlivePerfect)
 [![Forks](https://img.shields.io/github/forks/Pangu-Immortal/KeepAlivePerfect?style=for-the-badge&logo=github&color=blue)](https://github.com/Pangu-Immortal/KeepAlivePerfect/fork)
 [![访问量](https://komarev.com/ghpvc/?username=Pangu-Immortal-KeepAlivePerfect&label=访问量&color=f59e0b&style=for-the-badge)](https://github.com/Pangu-Immortal/KeepAlivePerfect)
-
-![萌萌计数器](https://moe-counter.glitch.me/get/@KeepAlivePerfect?theme=rule34)
-
 </div>
 
 点击star，关注不迷路。
@@ -147,8 +149,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
