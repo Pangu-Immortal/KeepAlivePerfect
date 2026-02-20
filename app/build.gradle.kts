@@ -1,0 +1,43 @@
+plugins {
+    id("com.android.application")
+}
+
+android {
+    compileSdk = 36
+
+    defaultConfig {
+        applicationId = "com.boolbird.keepalive"
+        minSdk = 24
+        targetSdk = 36
+        versionCode = 100
+        versionName = "1.0.1"
+
+        ndk {
+            abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
+        }
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+    }
+
+    lint {
+        abortOnError = false
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    namespace = "com.boolbird.keepalive.demo"
+}
+
+dependencies {
+    implementation("androidx.constraintlayout:constraintlayout:2.2.1")
+    implementation("androidx.core:core-ktx:1.17.0")
+    implementation(project(":library"))
+}
