@@ -1,19 +1,15 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'kotlin-parcelize'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
 }
 
 android {
-    compileSdk 33
+    compileSdk 36
 
     defaultConfig {
         applicationId 'com.boolbird.keepalive'
 
-        minSdk 19
-        targetSdk 32
+        minSdk 24
+        targetSdk 36
 
         versionCode 100
         versionName "1.0.1"
@@ -28,22 +24,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    lintOptions {
+    lint {
         abortOnError false
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     namespace 'com.boolbird.keepalive.demo'
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar", '*.aar'])
-    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
-    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation "androidx.constraintlayout:constraintlayout:2.2.1"
+    implementation 'androidx.core:core-ktx:1.17.0'
     implementation project(path: ':library')
 }
