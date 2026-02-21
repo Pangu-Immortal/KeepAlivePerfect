@@ -365,15 +365,9 @@ Application.attachBaseContext()
 3. 不建议在 C 端产品上使用，可能会给用户带来性能损失，像病毒一样存在于用户手机上是不合理的。
 4. 可作为学习 Binder 框架的一个案例。
 
-## Contributing
+## Star 趋势
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+[![Star History Chart](https://api.star-history.com/svg?repos=Pangu-Immortal/KeepAlivePerfect&type=Date)](https://star-history.com/#Pangu-Immortal/KeepAlivePerfect&Date)
 
 ## License
 
