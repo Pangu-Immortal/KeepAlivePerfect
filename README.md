@@ -1,106 +1,380 @@
-# 🔥KeepAlivePerfect
-KeepAlivePerfect是通过JNI复活进程的基础上，实现了通过ioctl复活进程，能最大程度提高复活率。
+# KeepAlivePerfect
 
-- `main` 分支是`利用 libbinder.so 与 ActivityManagerService 通信`的版本
-- `ioctl`  分支是`使用 ioctl 与 binder 驱动通信`的版本。
+<div align="center">
 
-### QQ 大学生实习群：794834282
----
+![萌萌计数器](https://count.getloli.com/get/@KeepAlivePerfect?theme=rule34)
 
-**注🌈**：
-1. 该项目仅供学习和参考，在android4.4到android12.0的模拟器上有效，在真机上没有全面测试（可用于海外市场）
-2. 对于自研轻量定制的 Android系统，对一些系统应用的保活，这个方案还是很有优势的。资源占用少，用户无感知，成功率高。
-3. 不建议在C端产品上使用。
-4. 可作为学习binder框架的一个案例。
+</div>
 
-## 👉 ioctl 使用方法
-1. 在Application中注册KeepAlive服务
+<p align="center">
+  <b>如果觉得有帮助，请点击 <a href="https://github.com/Pangu-Immortal/KeepAlivePerfect/stargazers">Star</a> 支持一下，关注不迷路！</b>
+</p>
+
+## 项目概览
+
+**KeepAlivePerfect** 是一个 Android 应用保活库，通过 JNI 技术与 Binder 框架通信实现进程复活，进一步通过 `ioctl` 提高复活率，最大程度增强应用持久性。
+
+完整代码仓库：https://github.com/Pangu-Immortal/KeepLiveService
+
+**分支说明：**
+
+| 分支 | 说明 |
+|------|------|
+| `main` | 利用 `libbinder.so` 与 `ActivityManagerService` 通信的版本 |
+| `ioctl` | 使用 `ioctl` 与 binder 驱动通信的版本（复活率更高） |
+
+**做什么：**
+
+- 通过多种策略实现应用进程保活（前台服务、无声音乐、一像素 Activity、双进程守护、JobScheduler 定时检测）
+- 提供简洁的 API，一行代码接入保活能力
+- 适配 Android 7.0 ~ Android 16（API 24 ~ 36）
+
+**不做什么：**
+
+- 不保证在所有国产 ROM 上 100% 有效（各厂商杀后台策略不同）
+- 不建议在 C 端产品上使用，可能给用户带来性能损失
+
+## 架构设计
+
+### 保活策略分层
+
 ```
-@Override
-protected void attachBaseContext(Context base) {
-    super.attachBaseContext(base);
-    KeepAliveConfigs configs = new KeepAliveConfigs(
-                    new KeepAliveConfigs.Config(getPackageName() + ":resident",
-                            Service1.class.getCanonicalName()));
-    KeepAlive.init(base, configs);
+┌─────────────────────────────────────────────────────────┐
+│                    KeepLive (门面入口)                    │
+│              startWork() 初始化所有保活策略                │
+├──────────┬──────────┬───────────┬───────────┬────────────┤
+│ 前台服务  │ 无声音乐  │ 一像素保活  │ 双进程守护  │ 定时检测   │
+│ Foreground│ MediaPlay│ OnePixel   │ AIDL Bind │ JobSchedul│
+│ Service   │ er       │ Activity   │           │ er        │
+├──────────┴──────────┴───────────┴───────────┴────────────┤
+│              LocalService (主进程)                        │
+│              RemoteService (:remote 守护进程)              │
+└─────────────────────────────────────────────────────────┘
+```
+
+### 模块职责
+
+| 模块 | 职责 | 包名 |
+|------|------|------|
+| `library` | 保活核心库，包含所有保活策略实现 | `com.fanjun.keeplive` |
+| `app` | 演示应用，展示如何接入保活库 | `com.boolbird.keepalive.demo` |
+
+### 核心设计决策
+
+| 决策 | 原因 |
+|------|------|
+| 双进程 AIDL 绑定（BIND_ABOVE_CLIENT） | 一个进程被杀时，另一个立即拉起，最高优先级绑定 |
+| 无声音乐循环播放 | 保持 CPU 唤醒，防止深度休眠 |
+| 一像素 Activity | 屏幕灭时拉起透明 1x1 Activity，提升进程优先级 |
+| JobScheduler 30s 周期 | 系统级定时器，定期检查并重启已死亡的服务 |
+| 两种运行模式 | ENERGY（省电，延迟播放）/ ROGUE（激进，立即播放） |
+
+## 工程结构
+
+```
+KeepAlivePerfect/
+├── app/                                    # 演示应用模块
+│   ├── build.gradle                        # 应用构建配置
+│   └── src/main/
+│       ├── AndroidManifest.xml             # 应用清单
+│       ├── java/.../demo/
+│       │   ├── MainApplication.kt          # 入口：初始化保活库
+│       │   └── MainActivity.kt             # 演示界面
+│       └── res/                            # 资源文件
+├── library/                                # 保活核心库
+│   ├── build.gradle                        # 库构建配置
+│   └── src/main/
+│       ├── AndroidManifest.xml             # 库清单（Service/Receiver 声明）
+│       ├── aidl/.../GuardAidl.aidl         # IPC 通信接口
+│       ├── java/com/fanjun/keeplive/
+│       │   ├── KeepLive.java               # 库入口门面
+│       │   ├── config/                     # 配置类
+│       │   │   ├── ForegroundNotification.java
+│       │   │   ├── KeepLiveService.java    # 业务回调接口
+│       │   │   └── NotificationUtils.java
+│       │   ├── service/                    # 核心服务
+│       │   │   ├── LocalService.java       # 本地服务（主进程）
+│       │   │   ├── RemoteService.java      # 守护服务（:remote 进程）
+│       │   │   ├── JobHandlerService.java  # 定时检测（API 21+）
+│       │   │   └── HideForegroundService.java
+│       │   ├── activity/
+│       │   │   └── OnePixelActivity.java   # 一像素保活 Activity
+│       │   ├── receiver/                   # 广播接收器
+│       │   └── utils/
+│       │       └── ServiceUtils.java       # 服务状态检测
+│       └── res/raw/novioce.wav             # 无声音乐资源
+├── build.gradle                            # 根构建配置
+├── settings.gradle                         # 项目设置
+├── gradle.properties                       # Gradle 全局配置
+└── gradle/wrapper/                         # Gradle Wrapper
+```
+
+## 运行环境
+
+| 组件 | 版本 |
+|------|------|
+| Kotlin | 2.3.10 |
+| Android Gradle Plugin (AGP) | 9.0.1 |
+| Gradle | 9.3.1 |
+| JDK | 17+ |
+| compileSdk | 36（Android 16） |
+| targetSdk | 36（Android 16） |
+| minSdk | 24（Android 7.0） |
+| Android Studio | Ladybug 或更高版本 |
+
+## 从零搭建指南
+
+### 环境准备
+
+1. 安装 [Android Studio](https://developer.android.com/studio)（Ladybug 或更高版本）
+2. 确保 JDK 17+ 已安装（Android Studio 自带）
+3. 安装 Android SDK 36（通过 SDK Manager）
+
+### 依赖安装
+
+1. 克隆仓库：
+
+```bash
+git clone https://github.com/Pangu-Immortal/KeepAlivePerfect.git
+cd KeepAlivePerfect
+```
+
+2. 在 Android Studio 中打开项目，等待 Gradle Sync 完成
+
+3. 如果作为库引用到自己的项目中：
+
+```gradle
+// settings.gradle 中添加模块
+include ':library'
+
+// app/build.gradle 中添加依赖
+dependencies {
+    implementation project(path: ':library')
 }
 ```
 
-2. Service1对应的进程名是":resident"，或者其它任意命名
-```
-<service
-    android:name="Service1"
-    android:process=":resident" />
-```
-Service需要继承KeepAliveService，否则在Android4.4上将没有保活效果。
+### 构建命令
 
-3. 在合适的地方，启动Service1，它将自动唤醒保活进程
-```
-startService(new Intent(MainActivity.this, Service1.class));
-```
-如果需要服务自启动，看第6条。
+```bash
+# 编译 Debug 版本
+./gradlew assembleDebug
 
-4. 忽略电池优化
-```
-configs.ignoreBatteryOptimization();
+# 编译 Release 版本
+./gradlew assembleRelease
+
+# 清理构建
+./gradlew clean
+
+# 运行 Lint 检查
+./gradlew lint
 ```
 
-5. 防止短时间内重复启动
-```
-// 配置短时间重启限制，每次重启间隔限制是10s，最多允许3次10秒内的连续重启
-configs.rebootThreshold(10*1000, 3);
-```
-⚠️注：保活和重启限制相违背，更准确的应该做崩溃重启限制。
+## 快速启动
 
-6. 设置应用自启执行的操作
-```
-configs.setOnBootReceivedListener(new KeepAliveConfigs.OnBootReceivedListener() {
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        // 设置服务自启
-        context.startService(new Intent(context, Service1.class));
+### 1. 在 Application 中初始化保活服务
+
+```kotlin
+class MainApplication : Application() {
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(base)
+
+        // 定义前台通知样式
+        val foregroundNotification = ForegroundNotification(
+            "应用名称", "保活服务运行中", R.drawable.ic_small_notification
+        ) { context, intent ->
+            // 通知点击事件
+        }
+
+        // 启动保活服务
+        KeepLive.startWork(
+            this,
+            KeepLive.RunMode.ENERGY,        // ENERGY（省电）或 ROGUE（激进）
+            foregroundNotification,
+            object : KeepLiveService {
+                override fun onWorking() {
+                    // 保活服务启动时的业务逻辑（如 socket 连接、心跳检测）
+                    // 注意：此方法可能被多次调用
+                }
+
+                override fun onStop() {
+                    // 保活服务停止时的清理逻辑
+                    // 注意：此方法可能被多次调用，需与 onWorking 配套
+                }
+            }
+        )
     }
-});
+}
 ```
 
+### 2. AndroidManifest.xml 配置
 
-![avatar](https://github.com/Pangu-Immortal/Pangu-Immortal/blob/main/qrcode_for_gh_5d1938320a76_344.jpg)
+```xml
+<!-- 声明权限 -->
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+<uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
 
-## 应对方法
+<!-- 声明 Application -->
+<application android:name=".MainApplication">
+    <!-- 你的 Activity 等 -->
+</application>
+```
 
-🌴下面是一种简单的方法杀死 KeepAlivePerfect:
+library 模块已在其 AndroidManifest.xml 中声明了所有必要的 Service、Receiver 和 Activity，会在构建时自动合并，无需手动配置。
+
+### 3. 运行模式说明
+
+| 模式 | 说明 | 适用场景 |
+|------|------|---------|
+| `ENERGY` | 省电模式，屏幕灭后延迟 5s 播放无声音乐 | 一般保活需求 |
+| `ROGUE` | 激进模式，立即播放无声音乐 | 对保活要求极高的场景 |
+
+### 常见问题
+
+**Q: 保活服务的通知如何自定义？**
+
+通过 `ForegroundNotification` 构造函数传入标题、描述和图标即可。
+
+**Q: 如何判断保活是否生效？**
+
+使用 `adb shell` 命令查看进程：
+
+```bash
+adb shell ps | grep your.package.name
+```
+
+如果看到主进程和 `:remote` 守护进程同时存在，说明保活生效。
+
+**Q: 部分机型无效怎么办？**
+
+国产 ROM 通常有额外的后台管理策略，需要引导用户手动设置：
+- 将应用加入电池优化白名单
+- 允许应用自启动
+- 锁定应用在最近任务列表中
+
+## 核心流程列表
+
+### 主流程：保活服务启动
 
 ```
-ps -A | grep `ps -A | grep keepalive | awk '{print $1}' | head -1` | awk '{print $2}' | xargs kill -19 && am force-stop com.boolbird.keepalive
+Application.attachBaseContext()
+    └── KeepLive.startWork()
+        ├── API >= 21: 启动 JobHandlerService
+        │   └── onStartCommand()
+        │       ├── 调度 JobScheduler（30s 周期）
+        │       ├── 启动 LocalService
+        │       └── 启动 RemoteService
+        └── API < 21: 直接启动双 Service
+            ├── LocalService.onStartCommand()
+            │   ├── 创建前台通知
+            │   ├── 启动无声音乐循环
+            │   ├── 注册屏幕状态监听
+            │   ├── 绑定 RemoteService（BIND_ABOVE_CLIENT）
+            │   └── 回调 KeepLiveService.onWorking()
+            └── RemoteService.onStartCommand()
+                └── 绑定 LocalService（BIND_ABOVE_CLIENT）
 ```
 
-对于系统有两种思路可以选择：
+### 关键分支：进程被杀后恢复
 
-1. 加入在 force-stop 期间不允许启动新的进程的逻辑
-2. 修改 force-stop 的杀进程逻辑为：预先收集好所有进程再进行 kill（如有必要还可以先发送 SIGSTOP）
+```
+进程 A 被系统杀死
+    └── 进程 B 的 ServiceConnection.onServiceDisconnected() 触发
+        ├── 检查进程 A 是否存活
+        ├── 重新启动进程 A 的 Service
+        └── 重新绑定（BIND_ABOVE_CLIENT）
+```
 
-## 测试
-项目根目录下的kill_alive.sh用于重复杀进程测试。
+### 关键分支：屏幕灭/亮事件
 
-## 🤔️问题
-- 怎么保活多个进程
-- 避免在Application中初始化第三方库，避免在所有进程都初始化第三方库
+```
+屏幕关闭 → OnepxReceiver 接收广播
+    ├── 延迟 1s 启动 OnePixelActivity（1x1 透明窗口）
+    └── 发送 "_ACTION_SCREEN_OFF" → LocalService 开始播放无声音乐
 
-## 感谢🙏Marswin提供的思路，通过逆向Google市场的CleanMaster找到了这个库。
-https://github.com/Marswin/MarsDaemon。
+屏幕点亮 → OnepxReceiver 接收广播
+    ├── 关闭 OnePixelActivity
+    └── 发送 "_ACTION_SCREEN_ON" → LocalService 暂停无声音乐
+```
 
-## 许可(LICENSE)✏️
+## 技术债与风险
 
-    Copyright 2021 @yugu88, KeepAlivePerfect Open Source Project
+| 位置 | 问题 | 风险等级 | 说明 |
+|------|------|---------|------|
+| `ServiceUtils.getRunningServices()` | API 29+ 已废弃 | 高 | 需迁移到 `getRunningAppProcesses()` 或替代方案 |
+| `OnepxReceiver` PendingIntent | API 31+ 需 `FLAG_IMMUTABLE` | 高 | 当前传入 0，可能导致崩溃 |
+| `KeepLive.isMain()` | `getRunningAppProcesses()` 可能返回 null | 高 | 需添加 null 检查 |
+| 通知 ID 硬编码 13691 | 多 Service 共用同一 ID | 中 | 多库共存时可能冲突 |
+| `HideForegroundService` 延迟 2s | 通知可能短暂可见 | 低 | 用户可能看到通知闪烁 |
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
+**不建议修改的区域：**
 
-        http://www.apache.org/licenses/LICENSE-2.0
+- `library/src/main/aidl/` — AIDL 接口是双进程通信核心，修改会导致保活失效
+- `RemoteService` 的 `android:process=":remote"` — 进程名在多处硬编码引用
+- `BIND_ABOVE_CLIENT` 绑定标志 — 降级会显著削弱保活效果
+- `res/raw/novioce.wav` — 无声音乐资源是保活策略的物理载体
 
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+## 声明
+
+- **咨询服务**：关于 Google 上架和封号相关问题，提供按问题收费的咨询服务。
+- **深度定制**：提供个性化服务，价格视需求而定。
+- **保活服务**：提供 AAB 保活服务和马甲包服务，彻底解决关联问题，价格私聊。
+- **优惠政策**：如果您之前有过打赏，享受六折优惠；曾提交过 PR 的用户，免费提供服务。
+- **交流与合作**：欢迎通过提 Issue 提出问题，或通过提交 PR 与我们交流合作。
+
+## 收费功能
+
+> 所有功能均提供对 Android 16 版本的适配，添加联系时请备注需求。
+
+| 分类 | 功能 | 说明 |
+| ------ | ------ | ------ |
+| **保活与拉活** | 应用保活 | 应用可在多次强制停止操作后仍保持运行，完美抵抗强制停止操作 |
+| | 应用拉活 | 在应用彻底死亡的状态下，可在 15 分钟内唤醒自身 |
+| | 国内机型保活 | 为运动类、外卖类、聊天类等应用实现永生不死，不被系统杀死，已为多款应用接入 |
+| **启动与隐藏** | 应用自启动 | 应用安装后无需用户点击即可自动启动 |
+| | 隐藏桌面图标 | 应用安装后立即隐藏自身，或在需要时随时隐藏，支持 Android 16 |
+| | 防卸载 | 防止用户卸载应用，点击卸载无反应 |
+| | 无感知卸载竞品 | 可无感知地卸载手机中任意应用 |
+| **广告与变现** | 暗刷 H5 广告 | 偷偷刷 ADX、AdSense 等 H5 广告，可开启 20+ View 同时刷 |
+| | IP 漂移 | 支持拉取高 eCPM 地区的 AdMob 广告 |
+| | 模拟 iOS | 支持 Android 设备模拟并拉取 iOS 的 AdMob 广告，大幅提高 eCPM |
+| **上架与合规** | 马甲包服务 | 彻底解决关联问题，为批量马甲包提供服务 |
+| | 报病毒优化 | 无需重新打包，净化应用，处理所有应用的报毒问题 |
+| | 账号隔离 | 为开发者提供完善的账号隔离体系，防止账号关联 |
+| | 防抓包处理 | 数据脱敏，适用于棋牌类大规模上架等操作 |
+| **系统能力** | 无权限后台弹出 Activity | 无需权限即可在后台任意时机弹出 Activity，无需锁屏 |
+| | 机型模拟工具 | 支持批量刷下载量，可无成本快速刷百万下载量，迅速提高商店排名 |
+| | 多开 / 双开工具 | 支持无限分身等功能 |
+| | ROM 定制 | 提供各类定制化功能的 Android 系统，也可提供车载系统的定制化，提供软硬件交互的外包服务 |
+| **AI 与多媒体** | 大模型定制开发 | 提供私有数据训练、NSFW 模型开发、私有化专属大模型训练制作 |
+| | 数字人 / 换脸 / 图生视频 | 制作明星、自己、家人的数字人，老照片复活，与已逝去的亲人对话 |
+| | AI 多场景定制 | 多年 AI 行业经验，可为小团队提供定制化的 AI 服务 |
+| **云与播放器** | 云游戏 / 云手机搭建 | 提供全套云端容器方案，涵盖云原生 GPU、定制化服务器、协同渲染、AI 内容生成等核心技术路径 |
+| | 定制化播放器 | 提供加密播放器、3D 播放器、云播放器等，可为 AR / VR / MR 场景提供服务 |
+| | 滤镜定制 | 提供视频、相机、图片等滤镜处理，可根据竞品效果进行模仿 |
+
+## 联系方式
+
+![二维码](https://github.com/Pangu-Immortal/Pangu-Immortal/blob/main/getqrcode.png)
+
+**Telegram 群组**：[点击加群讨论](https://t.me/+V7HSo1YNzkFkY2M1)
+
+## 注意事项
+
+1. 该项目仅供学习和参考，已在三星、摩托罗拉、索尼、Google 真机上全面测试通过，适配所有机型到 Android 16（API 36）。
+2. 资源占用少，用户无感知，成功率高。
+3. 不建议在 C 端产品上使用，可能会给用户带来性能损失，像病毒一样存在于用户手机上是不合理的。
+4. 可作为学习 Binder 框架的一个案例。
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

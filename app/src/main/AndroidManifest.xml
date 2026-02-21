@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.boolbird.keepalive.demo">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
@@ -9,24 +8,25 @@
     <application
         android:name="com.boolbird.keepalive.demo.MainApplication"
         android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:label="KeepAlive"
         android:supportsRtl="true"
         tools:ignore="GoogleAppIndexingWarning">
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_small_notification" />
+
         <activity
             android:name="com.boolbird.keepalive.demo.MainActivity"
             android:exported="true"
-            android:label="KeepAlive"
-            android:theme="@android:style/Theme.NoTitleBar">
+            android:label="KeepAlive">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <service
-            android:name="com.boolbird.keepalive.demo.Service1"
-            android:exported="true"
-            android:process=":resident" />
     </application>
 
 </manifest>

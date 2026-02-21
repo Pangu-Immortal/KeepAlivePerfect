@@ -2,7 +2,6 @@ package com.boolbird.keepalive.demo
 
 import android.app.Activity
 import android.os.Bundle
-import com.boolbird.keepalive.demo.R
 
 /**
  * Doc说明 (此类核心功能):
@@ -25,6 +24,8 @@ import com.boolbird.keepalive.demo.R
  * └─────────────────────────────────────────────────────────────┘
  *
  */
+private const val TAG = "MainActivity"
+
 class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
